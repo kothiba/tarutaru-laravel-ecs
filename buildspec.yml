@@ -16,13 +16,13 @@ phases:
   build:
     commands:
       - echo Building the Nginx Docker image...
-      - docker build --no-cache --platform linux/amd64 -t devtnagano/laravel-web -f ./laravel/infra/web/Dockerfile .
+      - docker build --no-cache --platform linux/amd64 -t devtnagano/laravel-web -f ./infra/web/Dockerfile .
       - docker tag devtnagano/laravel-web:latest ${NGINX_ECR_REPO_URL}:latest
       - CURRENT_NGINX_ECR_REPO_URL="${NGINX_ECR_REPO_URL}":latest
       - docker push $CURRENT_NGINX_ECR_REPO_URL
 
       - echo Building the PHP Docker image...
-      - docker build --no-cache --platform linux/amd64 -t devtnagano/laravel-app -f ./laravel/infra/app/Dockerfile .
+      - docker build --no-cache --platform linux/amd64 -t devtnagano/laravel-app -f ./infra/app/Dockerfile .
       - docker tag devtnagano/laravel-app:latest ${PHP_ECR_REPO_URL}:latest
       - CURRENT_PHP_ECR_REPO_URL="${PHP_ECR_REPO_URL}":latest
       - docker push $CURRENT_NGINX_ECR_REPO_URL
