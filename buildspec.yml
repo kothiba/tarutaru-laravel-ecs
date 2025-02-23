@@ -25,7 +25,7 @@ phases:
       - docker build --no-cache --platform linux/amd64 -t devnagano/laravel-app -f ./infra/php/Dockerfile .
       - docker tag devnagano/laravel-app:latest ${PHP_ECR_REPO_URL}:latest
       - CURRENT_PHP_ECR_REPO_URL="${PHP_ECR_REPO_URL}":latest
-      - docker push $CURRENT_NGINX_ECR_REPO_URL
+      - docker push $CURRENT_PHP_ECR_REPO_URL
 
   post_build:
     commands:
