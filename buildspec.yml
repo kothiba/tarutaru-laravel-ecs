@@ -7,9 +7,8 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 
-      - cp laravel/.env.example laravel/.env
-      - . laravel/deploy/set_env_variables.sh
-      - bash laravel/deploy/set_env_variables.sh
+      - cp .env.example laravel/.env
+      - bash deploy/set_env_variables.sh
 
       - NGINX_ECR_REPO_URL=$AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/devtnagano/laravel-web
       - PHP_ECR_REPO_URL=$AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/devtnagano/laravel-app
