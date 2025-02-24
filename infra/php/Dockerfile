@@ -35,7 +35,7 @@ WORKDIR /app
 
 # copy soruce
 ADD . .
-ADD .env.sample .env
+ADD .env.example .env
 
 # install composer libs and clear cache
 RUN composer install && \
